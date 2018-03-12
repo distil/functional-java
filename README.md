@@ -28,7 +28,8 @@ public Result<JSONObject, IOException> loadJson(@NotNull String filename) {
     ).get()
 }
 
-public Result<String, Exception> getConfigured(String key) {
+@NotNull
+public Result<String, Exception> getConfigured(@NotNull String key) {
     return loadJson("config.json")
         .andThen(
             config -> okOrNullException(config.getString(key))
