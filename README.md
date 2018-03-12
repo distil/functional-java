@@ -7,33 +7,36 @@ More importantly it adds mitigations to contain some of Java's shortcomings like
 Designed to also work with Android projects.
 
 ## Motivations
-This is an example of how to fend off parts of Javas ordinary control-flow (returning null/IOException) by instead using `Result`.
+This is an example of how to fend off parts of Javas ordinary control-flow (returning null/throwing IOException) by instead using `Result`.
 By using `Result` you are consistent with "error"-handling and have more explicit control.
 
 ```java
-import lang.NotNull;
-
-import static functional.Result.okOrNullException;
+// LoadJson.java
 import static functional.ThrowsAsResult.throwsAsResult;
 
-public standardLoadJson(String filename) throws IOException {
+JSONObject standardLoadJson(String filename) throws IOException {
     // The standard way of loading a json file.
 }
 
-@NotNull
-public Result<JSONObject, IOException> loadJson(@NotNull String filename) {
-    return throwsAsResult(
-        () -> standardLoadJson("config.json"),
-        IOException.class
-    ).get()
+public class LoadJson {
+    public static Result<JSONObject, IOException> loadJson(String filename) {
+        return throwsAsResult(
+            () -> standardLoadJson("config.json"),
+            IOException.class
+        ).get()
+    }
 }
 
-@NotNull
-public Result<String, Exception> getConfigured(@NotNull String key) {
-    return loadJson("config.json")
-        .andThen(
-            config -> okOrNullException(config.getString(key))
-        );
+
+// main.java
+import static functional.Result.okOrNullException;
+import static LoadJson.loadJson;
+
+public Result<String, Exception> getConfigured(String key) {
+    return ok("config.json", Exception.class)
+            .andThen(::loadJson)
+            .andThen(config -> okOrNullException(config.getString(key)));
+    }
 }
 
 public int main() {
