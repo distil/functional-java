@@ -53,4 +53,19 @@ This example reads the configurated `width` or defaults to `80`.
 `functional-java` relies on lambdas and therefore requires java 8 or backporting with retrolambda or similar.
 
 ## Installation
-Maven support is coming, for now just copy this into your project or have it as a submodule.
+### Gradle
+Add it in your root build.gradle at the end of repositories:
+```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+Add the dependency
+```gradle
+dependencies {
+        compile 'com.github.distil:functional-java:1.0'
+}
+```
