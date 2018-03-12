@@ -6,7 +6,7 @@ More importantly it adds mitigations to contain some of Java's shortcomings like
 
 Designed to also work with Android projects.
 
-## Motivations
+## Motivation
 This is an example of how to fend off parts of Javas ordinary control-flow (returning null/throwing IOException) by instead using `Result`.
 By using `Result` you are consistent with "error"-handling and have more explicit control.
 
