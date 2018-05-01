@@ -1,4 +1,6 @@
 # functional-java
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdistil%2Ffunctional-java.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdistil%2Ffunctional-java?ref=badge_shield)
+
 A library to ease functional programming in Java.
 
 `functional-java` has borrowed alot of the interfaces and ideas from how `Rust` does it.
@@ -69,3 +71,7 @@ dependencies {
         compile 'com.github.distil:functional-java:1.0'
 }
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdistil%2Ffunctional-java.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdistil%2Ffunctional-java?ref=badge_large)
